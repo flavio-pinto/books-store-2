@@ -1,12 +1,14 @@
 import { Component } from "react";
 import AddComment from "./AddComment";
 import CommentsList from "./CommentsList";
+import Error from "./Error";
 import Loading from "./Loading";
 
 class CommentArea extends Component {
   state = {
     comments: [],
     loading: true,
+    error: false,
   };
 
   componentDidMount = () => {
@@ -31,15 +33,25 @@ class CommentArea extends Component {
           this.setState({
             comments: data,
             loading: false,
+            error: false,
           });
         }, 1500);
-        
       } else {
-        this.setState({ loading: false });
+        setTimeout(() => {
+          this.setState({
+            loading: false,
+            error: true 
+          });
+        }, 1500);
         console.log("Qualcosa è andato storto");
       }
     } catch (error) {
-      this.setState({ loading: false });
+      setTimeout(() => {
+        this.setState({
+          loading: false,
+          error: true
+        });
+      }, 1500);
       console.log(error);
     }
   };
@@ -48,6 +60,7 @@ class CommentArea extends Component {
     return (
       <div>
         {this.state.loading && <Loading />}
+        {this.state.error && <Error />}
         <AddComment bookAsin={this.props.elementId} />
         <CommentsList comments={this.state.comments} />
       </div>
