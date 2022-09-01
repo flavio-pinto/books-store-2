@@ -33,7 +33,7 @@ class BookList extends Component {
               books.filter((book) => book.title.toLowerCase().includes(this.state.query))
               .map((book) => (
                 <Col key={book.asin} md={2}>
-                  <SingleBook  imgUrl={book.img} title={book.title} />
+                  <SingleBook bookAsin={book.asin} imgUrl={book.img} title={book.title} />
                 </Col>
               ))
             }
