@@ -1,4 +1,5 @@
 import { Component } from "react";
+import AddComment from "./AddComment";
 import CommentsList from "./CommentsList";
 
 class CommentArea extends Component {
@@ -23,21 +24,21 @@ class CommentArea extends Component {
       );
       if(res.ok) {
         let data = await res.json();
-        console.log(data);
         this.setState({
           comments: data
         })
       } else {
-        console.log('Qualcosa è andato storto');
+        alert('Qualcosa è andato storto');
       }
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   }
 
   render() {
     return(
       <div>
+        <AddComment bookAsin={this.props.elementId}/>
         <CommentsList comments={this.state.comments} />
       </div>
     )

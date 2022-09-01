@@ -8,11 +8,6 @@ class CommentsList extends Component {
       <ListGroup>
         {
           this.props.comments.map((el) => (
-            // <ListGroup.Item key={el._id}>
-            //   <p>{el.author}</p>
-            //   <p>Voto: {el.rate}/5</p>
-            //   <p>{el.comment}</p>
-            // </ListGroup.Item>
             <SingleComment comment={el} key={el._id}/>
           ))
         }
