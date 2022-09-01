@@ -9,7 +9,7 @@ class SingleBook extends Component {
   render() {
     return (
       <>
-        <Card onClick={() => this.setState({ selected: !this.state.selected })} style={{opacity: this.state.selected ? '0.5' : '1'}}>
+        <Card onClick={() => this.setState({ selected: !this.state.selected })} style={{border: this.state.selected ? '3px solid red' : '0px'}}>
           <Card.Img variant="top" src={this.props.imgUrl} />
           <Card.Body>
             <Card.Title>{this.props.title}</Card.Title>
